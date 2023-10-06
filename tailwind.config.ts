@@ -131,9 +131,6 @@ module.exports = {
                 },
             },
         },
-        fontFamily: {
-            custom: ["Inter", "sans-serif"],
-        },
     },
     plugins: [require("@tailwindcss/typography"), require("@tailwindcss/forms")],
 };

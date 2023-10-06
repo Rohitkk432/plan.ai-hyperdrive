@@ -11,6 +11,7 @@ import Image from "next/image";
 import Spinner from "@/components/custom/spinner";
 import cn from "classnames";
 import Button from "@/components/ui/button/ButtonNew";
+import { ToggleSwitch } from "@/components/ui/button/toggle-switch";
 
 import GithubBtn from "@/components/SignInBtns/Github";
 import JiraBtn from "@/components/SignInBtns/Jira";
@@ -119,6 +120,7 @@ export const Step1: React.FC<Step1Props> = ({ setStep }) => {
     const [isIssueLoading, setIsIssueLoading] = useState(false);
 
     const [additionalComments, setAdditionalComments] = useState("");
+    const [taskAnonymization, setTaskAnonymization] = useState(true);
 
     const [repoIssues, setRepoIssues] = useState<any>([]);
 
@@ -222,7 +224,9 @@ export const Step1: React.FC<Step1Props> = ({ setStep }) => {
         }
     }, [session, selectedRepo]);
 
-    const handleSubmit = () => {};
+    const handleSubmit = () => {
+        setStep(2);
+    };
 
     return (
         <div
@@ -328,7 +332,7 @@ export const Step1: React.FC<Step1Props> = ({ setStep }) => {
                 </div>
             </div>
 
-            <div className="flex flex-col gap-2 h-full">
+            <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-3 uppercase ">
                     <div>Additional Comments</div>
                     <QuestionMarkCircleIcon className="h-5 w-5 " />
@@ -339,6 +343,14 @@ export const Step1: React.FC<Step1Props> = ({ setStep }) => {
                     onChange={(e) => setAdditionalComments(e.target.value)}
                     inputClassName="text-2xs xl:text-xs 3xl:text-sm h-full"
                 />
+            </div>
+
+            <div className="flex gap-10">
+                <div className="flex items-center gap-3 uppercase ">
+                    <div>Anonymize Codebase</div>
+                    <QuestionMarkCircleIcon className="h-5 w-5 " />
+                </div>
+                <ToggleSwitch value={taskAnonymization} onChange={() => setTaskAnonymization(!taskAnonymization)} size="lg" />
             </div>
 
             <div className="mt-auto flex w-full items-center justify-between">

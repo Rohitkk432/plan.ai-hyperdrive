@@ -80,6 +80,19 @@
   background-clip: padding-box, border-box;
 }
 
+.conic-gradient{
+  background: conic-gradient(from -13deg at 50% 50%, #6BAE63 33.74991148710251deg, #FE9A3E 102.97966003417969deg, #F5E468 136.79764866828918deg, #FE9A3E 166.09835743904114deg, #F5E468 232.75338649749756deg, #6BAE63 269.15870904922485deg, #FE9A3E 313.6172032356262deg , #6BAE63 360deg);
+  box-shadow: 0px 0px 106px -19px #FE9A3E;
+}
+
+.conic-gradient-2{
+  background: conic-gradient(from 180deg at 48.15% 79.46%, #FE9A3E 58.591986894607544deg, #FE9A3E 142.0177960395813deg, #F5E468 193.50271224975586deg, #F5E468 319.0849184989929deg ,#FE9A3E 360deg);
+;
+}
+
+.top-bottom-landing-grad{
+  background: linear-gradient(180deg, #000 0%, #FE9A3E 42.71%, #6BAE63 71.35%, #000 100%);
+}
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
