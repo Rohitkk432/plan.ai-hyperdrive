@@ -1,13 +1,8 @@
 const routes = {
-  onboarding: '/onboarding',
-  learn:'/learn',
-  projects: '/projects',
-  swap: '/swap',
-  roadmaps: '/roadmaps',
-  issues: '/issues',
-  incentivizeContributors: '/incentivize-contributors',
-  profile: '/profile',
-  notification: '/notifications',
+    createTasks: "/create-tasks",
+    myTasks: "/my-tasks",
+    openSource: "/open-source",
+    billing: "/billing",
 };
 
 export default routes;

@@ -24,7 +24,7 @@ function CustomApp({ Component, pageProps: { session, ...pageProps } }: AppProps
             <Head>
                 {/* maximum-scale 1 meta tag need to prevent ios input focus auto zooming */}
                 <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1" />
-                <title>Plan</title>
+                <title>plAn.ai - The first project management tool that gets things done</title>
             </Head>
             <Provider store={store}>
                 <SessionProvider session={session}>

@@ -41,61 +41,30 @@ function HeaderRightArea() {
   );
 }
 
-interface PageHeaderProps {
-  title: string;
-  description?: string[];
-}
-
-const PageHeader: React.FC<PageHeaderProps> = ({ title, description }) => {
-  return (
-    <div className="flex flex-col">
-      <div className="mb-3 mt-5 text-5xl font-bold text-primary xl:mt-3.5 xl:text-6xl 2xl:mb-3.5 2xl:text-7xl 3xl:mb-4 3xl:mt-4">
-        {title}
-      </div>
-      {description &&
-        description.length !== 0 &&
-        description.map((item: string, idx: number) => (
-          <div key={idx} className="text-xs xl:text-sm 2xl:text-base">
-            {item}
-          </div>
-        ))}
-    </div>
-  );
-};
-
 export default function Header({ className }: { className?: string }) {
-  const router = useRouter();
-  const isMounted = useIsMounted();
-  const { openDrawer } = useDrawer();
-  const windowScroll = useWindowScroll();
-  return (
-    <nav
-      className={cn(
-        'relative top-0 right-0 z-30 h-[7rem] w-full transition-all duration-300 lg:h-[8rem] 2xl:h-[11rem]',
-        // isMounted && windowScroll.y
-        //   ? 'bg-gradient-to-b from-dark to-dark/80 shadow-card backdrop-blur'
-        //   : '',
-      )}
-    >
-      <div className="flex h-full items-start justify-between px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center">
-          <div className="m-5 ml-0 block lg:hidden">
-            <Hamburger
-              isOpen={false}
-              variant="solid"
-              onClick={() => openDrawer('DASHBOARD_SIDEBAR', 'left')}
-              className="text-white"
-            />
-          </div>
-          {/* <div
-            onClick={() => router.push(routes.home)}
-            className="mr-4 flex items-center lg:hidden"
-          >
-            <Logo />
-          </div> */}
-        </div>
-        <HeaderRightArea />
-      </div>
-    </nav>
-  );
+    const router = useRouter();
+    const isMounted = useIsMounted();
+    const { openDrawer } = useDrawer();
+    const windowScroll = useWindowScroll();
+    return (
+        <nav
+            className={cn(
+                "relative top-0 right-0 z-30 h-[5rem] w-full transition-all duration-300"
+                // isMounted && windowScroll.y
+                //   ? 'bg-gradient-to-b from-dark to-dark/80 shadow-card backdrop-blur'
+                //   : '',
+            )}>
+            <div className="flex full items-start justify-between px-4 sm:px-6 lg:px-8">
+                <div className="flex items-center">
+                    <div className="m-5 ml-0 block lg:hidden">
+                        <Hamburger isOpen={false} variant="solid" onClick={() => openDrawer("DASHBOARD_SIDEBAR", "left")} className="text-white" />
+                    </div>
+                    {/* <div onClick={() => router.push(routes.home)} className="mr-4 flex items-center lg:hidden">
+                        <Logo />
+                    </div> */}
+                </div>
+                <HeaderRightArea />
+            </div>
+        </nav>
+    );
 }

@@ -5,7 +5,7 @@ import RootLayout from "@/layouts/_root-layout";
 const HomePage: NextPageWithLayout = () => {
     return (
         <>
-            <NextSeo title="Home" description="Plan" />
+            <NextSeo title="Home" description="plAn.ai - The first project management tool that gets things done" />
             <div>Home Page</div>
         </>
     );

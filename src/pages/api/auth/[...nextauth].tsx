@@ -20,7 +20,7 @@ export default NextAuth({
     ],
     theme: {
         colorScheme: "dark", // "auto" | "dark" | "light"
-        brandColor: "#FFFFFF", // Hex color code
+        primaryColor: "#FFFFFF", // Hex color code
         logo: "https://res.cloudinary.com/rohitkk432/image/upload/v1696467443/logo_zipcze.png", // Absolute URL to image
         buttonText: "Sign in with Github", // Text to display on the sign in button
     },
