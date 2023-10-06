@@ -68,6 +68,19 @@
   background: linear-gradient(90deg, #fe9a3e00 0%, #fe9a3e 32.83%, #fe9a3ef0 81.68%, #fe9a3e00 100%);
 }
 
+.lineGradientHorizontalGray{
+  background: linear-gradient(90deg, rgba(146, 171, 251, 0.00) 0%, #595959 32.83%, #595959f0 81.68%, rgba(146, 171, 251, 0.00) 100%);
+}
+
+.gradient-border-box-bottom {
+  border-bottom: double transparent;
+  background-image: linear-gradient(theme('colors.light-gray'), theme('colors.light-gray')),
+    linear-gradient(to right, #fe9a3e, #4D4137, #fe9a3e);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;

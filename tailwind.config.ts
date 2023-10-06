@@ -22,7 +22,7 @@ module.exports = {
                 "primary-custom-200": "#130B04",
                 "primary-custom-300": "#0B0602",
                 "primary-custom-400": "#4D4137",
-                "light-gray": "#24262C",
+                "light-gray": "#2F2A25",
                 "new-yellow": "#F5E468",
                 "new-green": "#6BAE63",
                 "blue-green": "#24998B",

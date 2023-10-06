@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
+import AtlassianProvider from "next-auth/providers/atlassian";
 
 export default NextAuth({
     secret: process.env.NEXTAUTH_SECRET,
@@ -16,14 +17,18 @@ export default NextAuth({
                 },
             },
         }),
+        AtlassianProvider({
+            clientId: process.env.ATLASSIAN_CLIENT_ID || "",
+            clientSecret: process.env.ATLASSIAN_CLIENT_SECRET || "",
+            authorization: {
+                params: {
+                    scope: "write:jira-work read:jira-work read:jira-user offline_access read:me",
+                },
+            },
+        }),
+        // Add other providers here
         // Add other providers here
     ],
-    theme: {
-        colorScheme: "dark", // "auto" | "dark" | "light"
-        primaryColor: "#FFFFFF", // Hex color code
-        logo: "https://res.cloudinary.com/rohitkk432/image/upload/v1696467443/logo_zipcze.png", // Absolute URL to image
-        buttonText: "Sign in with Github", // Text to display on the sign in button
-    },
     callbacks: {
         async jwt({ token, account, user }) {
             // Persist the OAuth access_token to the token right after signin

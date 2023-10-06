@@ -13,7 +13,7 @@ export const SigninBtn: React.FC<SigninBtnProps> = ({}) => {
         <div
             onClick={() => {
                 const user_type = localStorage.getItem("user_type");
-                if (session) {
+                if ((session as any).accessToken) {
                     router.push("/home");
                 } else {
                     signIn("github", {
