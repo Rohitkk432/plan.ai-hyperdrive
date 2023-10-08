@@ -12,12 +12,11 @@ export const SigninBtn: React.FC<SigninBtnProps> = ({}) => {
     return (
         <div
             onClick={() => {
-                const user_type = localStorage.getItem("user_type");
-                if ((session as any).accessToken) {
-                    router.push("/home");
+                if (session as any) {
+                    router.push("/create-tasks");
                 } else {
                     signIn("github", {
-                        callbackUrl: `${window.location.origin}/create-task`,
+                        callbackUrl: `${window.location.origin}/create-tasks`,
                     });
                 }
             }}
