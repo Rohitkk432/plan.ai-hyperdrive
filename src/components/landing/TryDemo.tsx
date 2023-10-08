@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "@/components/ui/image";
-import LandingScreen3 from "@/assets/images/images/LandingScreen3.png";
+import TryDemoImg from "@/assets/images/landing/LandingS4.png";
 
 interface TryDemoProps {}
 
@@ -14,15 +14,14 @@ export const TryDemo: React.FC<TryDemoProps> = ({}) => {
                 <br />
                 gated communities and additional utility as determined by project owners
             </div>
-            <div className="conic-gradient-2 flex w-[55rem] items-end rounded-2xl p-16 pb-0 xl:w-[60rem] 3xl:w-[65rem]">
+            <div className="conic-gradient-2 flex w-[60rem] items-end rounded-2xl pb-4 px-40 pt-8 xl:w-[65rem] 3xl:w-[75rem]">
                 <Image
                     width={0}
                     height={0}
                     alt="screen"
                     style={{ width: "100%", height: "auto" }} // optional
                     sizes="100vw"
-                    src={LandingScreen3}
-                    className="opacity-0"
+                    src={TryDemoImg}
                 />
             </div>
         </div>

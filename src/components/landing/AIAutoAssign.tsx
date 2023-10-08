@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "@/components/ui/image";
-import RoadmapScreen from "@/assets/images/images/RoadmapScreen.png";
+import AIAutoAssignImg from "@/assets/images/landing/LandingS2.png";
 
 interface AIAutoAssignProps {}
 
@@ -24,15 +24,14 @@ export const AIAutoAssign: React.FC<AIAutoAssignProps> = ({}) => {
                     <br /> performance & current availability is assigned.
                 </div>
             </div>
-            <div className="conic-gradient flex w-[340rem] rounded-[5rem] py-10 xl:w-[45rem] 3xl:w-[50rem]">
+            <div className="conic-gradient flex w-[34rem] rounded-[5rem] py-10 xl:w-[40rem] 3xl:w-[45rem] px-8">
                 <Image
                     width={0}
                     height={0}
                     alt="screen"
                     style={{ width: "100%", height: "auto" }} // optional
                     sizes="100vw"
-                    src={RoadmapScreen}
-                    className="opacity-0"
+                    src={AIAutoAssignImg}
                 />
             </div>
         </div>

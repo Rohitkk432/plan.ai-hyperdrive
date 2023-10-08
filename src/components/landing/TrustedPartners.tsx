@@ -2,10 +2,10 @@ import React from 'react';
 import Image from '@/components/ui/image';
 import AnchorLink from '@/components/ui/links/anchor-link';
 
-import Solana from '@/assets/images/images/trusted1.png';
-import SuperteamEarn from '@/assets/images/images/trusted2.png';
-import Superteam from '@/assets/images/images/trusted3.png';
-import DefiOS from '@/assets/images/images/logo-full.png';
+import Solana from "@/assets/images/landing/trusted1.png";
+import SuperteamEarn from "@/assets/images/landing/trusted2.png";
+import Superteam from "@/assets/images/landing/trusted3.png";
+import DefiOS from "@/assets/images/landing/logo-full.png";
 
 interface TrustedPartnersProps {}
 

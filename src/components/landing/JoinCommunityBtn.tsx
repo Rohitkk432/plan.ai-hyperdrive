@@ -1,10 +1,8 @@
 import React from "react";
-import Logo from "@/assets/images/logos/logo.png";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import Image from "@/components/ui/image";
-import AnchorLink from "@/components/ui/links/anchor-link";
-import { OpenAIIcon } from "@/components/icons/openai";
-
+import { OpenAIIcon } from "@/components/icons/brand/openai";
+import SolanaLogo from "@/assets/images/landing/solana-sol-logo.svg";
 interface JoinCommunityBtnProps {}
 
 export const JoinCommunityBtn: React.FC<JoinCommunityBtnProps> = ({}) => {
@@ -17,7 +15,9 @@ export const JoinCommunityBtn: React.FC<JoinCommunityBtnProps> = ({}) => {
                     <div className="h-[0px] w-5 origin-top-left rotate-90 border border-primary"></div>
                     <div className="flex items-start justify-start gap-3">
                         <div className="font-semibold leading-snug tracking-tight text-[#6BAE63]">Supercharged by Web3</div>
-                        <ArrowRightIcon className="h-3.5 text-indigo-300 xl:h-4 3xl:h-5" />
+                        <div className="relative h-3.5 xl:h-4 3xl:h-5 w-3.5 xl:w-4 3xl:w-5">
+                            <Image width={0} fill height={0} alt="logo" className="object-contain" src={SolanaLogo} />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -28,7 +28,9 @@ export const JoinCommunityBtn: React.FC<JoinCommunityBtnProps> = ({}) => {
                     <div className="h-[0px] w-5 origin-top-left rotate-90 border border-primary"></div>
                     <div className="flex items-start justify-start gap-3">
                         <div className="font-semibold leading-snug tracking-tight text-[#6BAE63]">Supercharged by Web3</div>
-                        <ArrowRightIcon className="h-3.5 text-indigo-300 xl:h-4 3xl:h-5" />
+                        <div className="relative h-3.5 xl:h-4 3xl:h-5 w-3.5 xl:w-4 3xl:w-5">
+                            <Image width={0} fill height={0} alt="logo" className="object-contain" src={SolanaLogo} />
+                        </div>
                     </div>
                 </div>
             </div>

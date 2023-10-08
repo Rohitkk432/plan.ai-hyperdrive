@@ -1,12 +1,12 @@
 import React from "react";
 import Image from "@/components/ui/image";
-import LandingScreen from "@/assets/images/images/LandingScreen1.png";
+import LandingScreen from "@/assets/images/landing/LandingHeader.png";
 
 interface HeaderScreenProps {}
 
 export const HeaderScreen: React.FC<HeaderScreenProps> = ({}) => {
     return (
-        <div className="relative flex h-[907px] w-[1368.50px] items-start justify-center">
+        <div className="relative flex h-[907px] w-[1368.50px] mt-20 items-start justify-center">
             <div className="absolute h-[800px] w-[1000px] opacity-75 blur-[100px]">
                 <div className="absolute left-[600px] top-[-60px] h-[1200px] w-[720px] origin-top-left rotate-[19.53deg] rounded-full bg-[#6BAE63] blur-[100px]" />
                 <div className="absolute left-[400px] top-[310px] h-[600px] w-[620px] rounded-full bg-[#F5E468] blur-[100px]" />
@@ -59,7 +59,7 @@ export const HeaderScreen: React.FC<HeaderScreenProps> = ({}) => {
                 <div className="absolute left-[1205px] top-[1.50px] h-[0px] w-[769px] origin-top-left rotate-90 border border-white opacity-10"></div>
             </div>
 
-            <Image width={0} height={0} alt="screen" className="absolute mt-[60px] w-[1050px] rounded-lg drop-shadow-2xl opacity-0" src={LandingScreen} />
+            <Image width={0} height={0} alt="screen" className="absolute -mt-10 w-[1200px] rounded-lg drop-shadow-2xl" src={LandingScreen} />
         </div>
     );
 };
