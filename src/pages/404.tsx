@@ -23,7 +23,7 @@ const ErrorPage: NextPageWithLayout = () => {
                 </p>
                 <AnchorLink
                     href={{
-                        pathname: routes.learn,
+                        pathname: routes.createTasks,
                     }}>
                     <Button shape="rounded">Back to Learn page</Button>
                 </AnchorLink>
