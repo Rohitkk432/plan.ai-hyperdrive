@@ -43,9 +43,6 @@ module.exports = {
                 "calc-320": "calc(100% - 320px)",
                 "calc-358": "calc(100% - 358px)",
             },
-            fontFamily: {
-                body: ["Fira Code", "monospace"],
-            },
             fontSize: {
                 "5xs": ["5px", "9px"],
                 "4xs": ["7px", "11px"],

@@ -17,7 +17,7 @@
   }
   html,
   body {
-    @apply font-body antialiased;
+    font-family: 'Inter', sans-serif;
   }
   .dynamic-html h6 {
     @apply font-medium uppercase;
@@ -183,10 +183,10 @@ Styles for Swiper slider
   background: rgb(214, 214, 214);
 }
 ::-webkit-scrollbar-thumb {
-  background: #fe9a3e;
+  background: rgb(64,64,64);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #fe9a3e;
+  background: rgb(64,64,64);
 }
 
 /* loading spinner */
