@@ -18,8 +18,9 @@ import JiraBtn from "@/components/SignInBtns/Jira";
 
 import axios from "@/lib/axiosClient";
 import { useAppDispatch, useAppSelector } from "@/store/store";
-// import { setStep1Data } from "@/store/newCreationSlice";
+import { setStep1Data } from "@/store/taskCreationSlice";
 import { useSession } from "next-auth/react";
+import { access } from "fs";
 
 interface RepoItemProps {
     repo: any;
@@ -77,20 +78,12 @@ const IssueItem: React.FC<IssueItemProps> = ({ item, selectedIssue, setSelectedI
             onClick={(e) => {
                 e.stopPropagation();
                 setSelectedIssue(item);
-                setIssueSearch(item.title);
+                setIssueSearch(item?.fields?.summary);
                 setChooseIssue(false);
             }}>
-            <div className="my-1 flex w-full items-center justify-between">
+            <div className="my-4 flex w-full items-center justify-between">
                 <div className="text-3xs xl:text-2xs 3xl:text-xs">
-                    {item?.title}
-                    {" #"}
-                    {item?.number}
-                </div>
-                <div className="flex flex-col gap-2 text-2xs xl:text-xs 3xl:text-sm">
-                    <div className="flex items-center gap-2">
-                        <div className="pl-1">{item?.comments}</div>
-                        <ChatBubbleLeftIcon className="h-4 w-4" />
-                    </div>
+                    {item?.key} {item?.fields?.summary}
                 </div>
             </div>
             <div className={"lineGradientHorizontalGray h-0.5 w-full"}></div>
@@ -105,7 +98,7 @@ interface Step1Props {
 export const Step1: React.FC<Step1Props> = ({ setStep }) => {
     const { data: session } = useSession();
     const dispatch = useAppDispatch();
-    // const step1Data = useAppSelector((state) => state.newCreation.step1);
+    const step1Data = useAppSelector((state) => state.taskCreation.step1);
 
     const [search, setSearch] = useState("");
     const [selectedRepo, setSelectedRepo] = useState<any>();
@@ -126,7 +119,7 @@ export const Step1: React.FC<Step1Props> = ({ setStep }) => {
 
     const [nextError, setNextError] = useState("");
 
-    const fetchRepos = async () => {
+    const fetchRepos = async (accessToken: string) => {
         let keepGoing = true;
         let pagination = 1;
         let _repos: any = [];
@@ -136,7 +129,7 @@ export const Step1: React.FC<Step1Props> = ({ setStep }) => {
                 .get(`https://api.github.com/user/repos?sort=pushed&per_page=100&page=${pagination}`, {
                     method: "GET",
                     headers: {
-                        Authorization: `Bearer ${(session as any)?.accessToken}`,
+                        Authorization: `Bearer ${accessToken}`,
                         Accept: "application/vnd.github.v3+json",
                     },
                 })
@@ -169,21 +162,18 @@ export const Step1: React.FC<Step1Props> = ({ setStep }) => {
         return filteredRepos;
     }, [search, repos, selectedRepo]);
 
-    const getIssues = async () => {
-        if (!selectedRepo?.html_url) return;
+    const getIssues = async (accessToken: string) => {
         setIsIssueLoading(true);
-        axios
-            .get(selectedRepo.html_url.replace("https://github.com/", "https://api.github.com/repos/") + "/issues", {
-                method: "GET",
-                headers: {
-                    Authorization: `Bearer ${(session as any)?.accessToken}`,
-                    Accept: "application/vnd.github.v3+json",
-                },
-            })
+        let config = {
+            method: "post",
+            url: "/api/get-issues",
+            data: {
+                access_token: accessToken,
+            },
+        };
+        axios(config)
             .then((res) => {
-                const filteredIssues = res.data.filter((item: any) => {
-                    return !Object.keys(item).includes("pull_request");
-                });
+                const filteredIssues = res.data.issues;
                 setRepoIssues(filteredIssues);
             })
             .catch((err) => console.log(err))
@@ -193,38 +183,63 @@ export const Step1: React.FC<Step1Props> = ({ setStep }) => {
     const IssuesSearch = useMemo(() => {
         if (issueSearch === "") return repoIssues;
         const filteredIssues = repoIssues.filter((_issue: any) => {
-            return _issue.title.toLowerCase().includes(issueSearch.toLocaleLowerCase());
+            return _issue.fields.summary.toLowerCase().includes(issueSearch.toLocaleLowerCase());
         });
         return filteredIssues;
     }, [issueSearch, repoIssues]);
 
     useEffect(() => {
-        if (session && (session as any)?.accessToken && repos.length === 0) {
-            fetchRepos();
+        const gh_token = localStorage.getItem("gh_token");
+        if (gh_token && gh_token.includes("gho_") && repos.length === 0) {
+            fetchRepos(gh_token);
 
-            // setSearch(step1Data.repoName);
-            // setSelectedRepo(step1Data.selectedRepo);
+            if (step1Data.repoName !== "") {
+                setSearch(step1Data.repoName);
+                setSelectedRepo(step1Data.selectedRepo);
+                setAdditionalComments(step1Data.additionalComments);
+            }
         }
     }, [session]);
 
     useEffect(() => {
+        console.log("in");
         if (
-            session &&
-            (session as any)?.accessToken &&
-            selectedRepo !== null &&
-            selectedRepo !== undefined &&
-            selectedRepo.html_url !== "" &&
-            selectedRepo.html_url !== null &&
-            selectedRepo.html_url !== undefined
+            //@ts-ignore
+            session?.accessToken &&
+            //@ts-ignore
+            session?.provider === "atlassian"
         ) {
-            getIssues();
+            console.log("in2");
+            //@ts-ignore
+            getIssues(session?.accessToken);
 
-            // setSearch(step1Data.repoName);
-            // setSelectedRepo(step1Data.selectedRepo);
+            if (step1Data.issueTitle !== "") {
+                setIssueSearch(step1Data.issueTitle);
+                setSelectedIssue(step1Data.selectedIssue);
+                setAdditionalComments(step1Data.additionalComments);
+            }
         }
     }, [session, selectedRepo]);
 
     const handleSubmit = () => {
+        if (selectedRepo === null || selectedRepo === undefined) {
+            setNextError("Choose Github Repository!");
+            return;
+        } else if (selectedIssue === null || selectedIssue === undefined) {
+            setNextError("Choose Jira Issue!");
+            return;
+        }
+        dispatch(
+            setStep1Data({
+                selectedRepo: selectedRepo,
+                issueTitle: selectedIssue?.fields?.summary,
+                selectedIssue: selectedIssue,
+                repoName: selectedRepo?.full_name,
+                repoId: selectedRepo?.id,
+                repoLink: selectedRepo?.html_url,
+                additionalComments: additionalComments,
+            })
+        );
         setStep(2);
     };
 
@@ -238,11 +253,11 @@ export const Step1: React.FC<Step1Props> = ({ setStep }) => {
                 }
                 setChooseIssue(false);
                 if (selectedIssue !== undefined || selectedIssue !== null) {
-                    setIssueSearch(selectedIssue?.title || "");
+                    setIssueSearch(selectedIssue?.fields?.summary || "");
                 }
             }}>
             <div className="flex flex-col gap-3">
-                <div className="flex items-center gap-3 uppercase ">
+                <div className="flex items-center gap-3 font-semibold  3xl:text-base xl:text-sm text-xs uppercase">
                     <div>Connected Applications</div>
                     <QuestionMarkCircleIcon className="h-5 w-5 " />
                 </div>
@@ -253,7 +268,7 @@ export const Step1: React.FC<Step1Props> = ({ setStep }) => {
             </div>
 
             <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-3 3xl:text-base xl:text-sm text-xs uppercase ">
+                <div className="flex items-center gap-3 font-semibold  3xl:text-base xl:text-sm text-xs uppercase">
                     <div>Choose Repository</div>
                     <QuestionMarkCircleIcon className="h-5 w-5 " />
                 </div>
@@ -295,8 +310,8 @@ export const Step1: React.FC<Step1Props> = ({ setStep }) => {
             </div>
 
             <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-3 3xl:text-base xl:text-sm text-xs uppercase ">
-                    <div>Choose an Issue</div>
+                <div className="flex items-center gap-3 font-semibold  3xl:text-base xl:text-sm text-xs uppercase">
+                    <div>Choose Jira Issue</div>
                     <QuestionMarkCircleIcon className="h-5 w-5 " />
                 </div>
                 <div className="relative">
@@ -333,7 +348,7 @@ export const Step1: React.FC<Step1Props> = ({ setStep }) => {
             </div>
 
             <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-3 uppercase ">
+                <div className="flex items-center gap-3 font-semibold  3xl:text-base xl:text-sm text-xs uppercase">
                     <div>Additional Comments</div>
                     <QuestionMarkCircleIcon className="h-5 w-5 " />
                 </div>
@@ -346,7 +361,7 @@ export const Step1: React.FC<Step1Props> = ({ setStep }) => {
             </div>
 
             <div className="flex gap-10">
-                <div className="flex items-center gap-3 uppercase ">
+                <div className="flex items-center gap-3 font-semibold  3xl:text-base xl:text-sm text-xs uppercase">
                     <div>Anonymize Codebase</div>
                     <QuestionMarkCircleIcon className="h-5 w-5 " />
                 </div>

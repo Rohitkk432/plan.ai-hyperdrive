@@ -12,7 +12,8 @@ export const SigninBtn: React.FC<SigninBtnProps> = ({}) => {
     return (
         <div
             onClick={() => {
-                if (session as any) {
+                //@ts-ignore
+                if (session?.provider === "github") {
                     router.push("/create-tasks");
                 } else {
                     signIn("github", {

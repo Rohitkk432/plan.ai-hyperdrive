@@ -30,7 +30,7 @@ export const Landing: React.FC<LandingProps> = ({}) => {
     return (
         <>
             <Head>
-                <title>DefiOS - Scaling Layer for Open Source Collaboration.</title>
+                <title>plAn.ai - The first project management tool that gets things done</title>
             </Head>
             <div className="flex min-h-screen w-screen flex-col items-center overflow-y-auto overflow-x-hidden bg-[#060606]">
                 <Nav handleFeatureClick={handleFeatureClick} />

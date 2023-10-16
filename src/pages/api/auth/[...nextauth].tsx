@@ -35,12 +35,14 @@ export default NextAuth({
             if (account) {
                 token.accessToken = account.access_token;
                 token.uid = user?.id;
+                token.provider = account.provider;
             }
             return token;
         },
         async session({ session, token }) {
             // Send properties to the client, like an access_token from a provider.
             (session as any).accessToken = token.accessToken;
+            (session as any).provider = token.provider;
             (session as any).user.id = token.uid;
             return session;
         },

@@ -3,10 +3,10 @@ import React, { useState, useEffect } from "react";
 import cn from "classnames";
 import Step1 from "@/components/create-task/Step1";
 import classNames from "classnames";
-// import Step2 from "@/components/create-task/Step2";
-// import Step3 from "@/components/create-task/Step3";
-// import Step4 from "@/components/create-task/Step4";
-// import Step5 from "@/components/create-task/Step5";
+import Step2 from "@/components/create-task/Step2";
+import Step3 from "@/components/create-task/Step3";
+import Step4 from "@/components/create-task/Step4";
+import Step5 from "@/components/create-task/Step5";
 
 interface CreateProps {}
 
@@ -55,10 +55,10 @@ export const Create: React.FC<CreateProps> = ({}) => {
                     <div className="absolute -left-[2.5%] -top-[1%] h-[75%] w-[105%] rounded-full border-2 bg-[#FE9A3E] blur-[100px]" />
                 </div>
                 {step === 1 && <Step1 setStep={setStep} />}
-                {/* {step === 2 && <Step2 setStep={setStep} />}
+                {step === 2 && <Step2 setStep={setStep} />}
                 {step === 3 && <Step3 setStep={setStep} />}
                 {step === 4 && <Step4 setStep={setStep} />}
-                {step === 5 && <Step5 setStep={setStep} />} */}
+                {step === 5 && <Step5 setStep={setStep} />}
             </div>
         </div>
     );

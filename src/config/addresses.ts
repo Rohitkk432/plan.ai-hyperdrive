@@ -1,6 +1,5 @@
 export const contractAddresses = {
-  // defios: '4UwHr76zjJaLxtbCmFmrWbkaZVVSujcumXjsFNhkBw3s',
-  defios: '7DjMy7URNwjKa7xEsCxqrxdk7BkfTyvDjeZTJJHs9dpF',
+    skill_staking: "CnMMyfQSGk7h6YNf2uLmBuLpfBKuMTYPct6PmFMM3P24",
 };
 
 export const staticAddresses = {

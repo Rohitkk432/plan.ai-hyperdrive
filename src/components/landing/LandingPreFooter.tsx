@@ -19,15 +19,6 @@ export const LandingPreFooter: React.FC<LandingPreFooterProps> = ({}) => {
                 />
             </div>
             <div className="text-center text-4xl font-black tracking-tight text-white 2xl:text-5xl">get started with plAn today.</div>
-            <div className="text-center text-lg text-gray-400 xl:text-xl 3xl:text-2xl">
-                defiOS helps you scale open source software without any
-                <br />
-                friction. we&apos;ll create a world where open source is well funded
-                <br />
-                and better than all the alternatives.
-                <br />
-                join defiOS, earn, build and help open source win.
-            </div>
             <div className="mt-12">
                 <SigninBtn />
             </div>

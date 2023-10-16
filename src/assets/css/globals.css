@@ -52,6 +52,21 @@
   }
 }
 
+.gradient-yellow-green {
+  border: 2px double transparent;
+  background-image: linear-gradient(black,black),
+    linear-gradient(#F5E468, #6BAE63);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+.text-gradient-yellow-green{
+  background: linear-gradient(180deg, #FE9A3E 0%, #F5E468 36.46%, #6BAE63 68.23%, #24998B 98.96%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .gradient-border-box {
   border: 2px double transparent;
   background-image: linear-gradient(black,black),

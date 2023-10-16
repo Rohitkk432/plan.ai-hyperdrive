@@ -9,36 +9,60 @@ import { useDrawer } from '@/components/drawer-views/context';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import routes from '@/config/routes';
 import { setSigner, setConnection } from '@/lib/helpers/wallet';
-import { useAppSelector, useAppDispatch } from '@/store/store';
-
-import { useWallet, useConnection } from '@solana/wallet-adapter-react';
-import { useSession } from 'next-auth/react';
-import { useEffect } from 'react';
+import { useAppSelector, useAppDispatch } from "@/store/store";
+import { selectUserMapping, getUserMapping, resetMapping } from "@/store/userMappingSlice";
+import { useWallet, useConnection } from "@solana/wallet-adapter-react";
+import { useSession } from "next-auth/react";
+import { useEffect } from "react";
 
 function HeaderRightArea() {
-  const router = useRouter();
-  const { data: session } = useSession();
-  const wallet = useWallet();
-  const { connection } = useConnection();
-  const dispatch = useAppDispatch();
+    const router = useRouter();
+    const { data: session } = useSession();
+    const wallet = useWallet();
+    const { connection } = useConnection();
+    const dispatch = useAppDispatch();
+    const userMappingState = useAppSelector(selectUserMapping);
+    const githubInfo = useAppSelector((state) => state.userInfo.githubInfo);
 
-  useEffect(() => {
-    if (wallet.publicKey)
-      setSigner(
-        wallet.publicKey,
-        wallet.signTransaction,
-        wallet.signAllTransactions
-      );
-    if (connection) setConnection(connection);
-  }, [wallet.publicKey, connection]);
+    useEffect(() => {
+        //@ts-ignore
+        if (
+            //@ts-ignore
+            localStorage.getItem("gh_token") &&
+            wallet.publicKey &&
+            //@ts-ignore
+            session?.accessToken &&
+            !userMappingState.isLoading &&
+            githubInfo?.id
+        ) {
+            dispatch(
+                getUserMapping({
+                    //@ts-ignore
+                    userID: githubInfo.id,
+                    //@ts-ignore
+                    accessToken: localStorage.getItem("gh_token"),
+                    userPubkey: wallet.publicKey.toBase58(),
+                })
+            );
+        } else if (!wallet.publicKey) {
+            console.log("entered else if");
+            dispatch(resetMapping());
+        }
+        //@ts-ignore
+    }, [wallet.publicKey, githubInfo]);
 
-  return (
-      <div className="flex flex-col items-end gap-6 xl:gap-7 2xl:gap-8 3xl:gap-10">
-          <div className="relative mt-5 flex shrink-0 items-center justify-end gap-4 gap-3 2xl:gap-8">
-              <WalletMultiButton className="gradient-border-box border-0.5 h-10 rounded-full bg-black 2xl:h-12" />
-          </div>
-      </div>
-  );
+    useEffect(() => {
+        if (wallet.publicKey) setSigner(wallet.publicKey, wallet.signTransaction, wallet.signAllTransactions);
+        if (connection) setConnection(connection);
+    }, [wallet.publicKey, connection]);
+
+    return (
+        <div className="flex flex-col items-end gap-6 xl:gap-7 2xl:gap-8 3xl:gap-10">
+            <div className="relative mt-5 flex shrink-0 items-center justify-end gap-4 gap-3 2xl:gap-8">
+                <WalletMultiButton className="gradient-border-box border-0.5 h-10 rounded-full bg-black 2xl:h-12" />
+            </div>
+        </div>
+    );
 }
 
 export default function Header({ className }: { className?: string }) {
@@ -49,10 +73,13 @@ export default function Header({ className }: { className?: string }) {
     return (
         <nav
             className={cn(
-                "relative top-0 right-0 z-30 h-[5rem] w-full transition-all duration-300"
+                "relative top-0 right-0 z-30 h-[5rem] w-full transition-all duration-300",
                 // isMounted && windowScroll.y
                 //   ? 'bg-gradient-to-b from-dark to-dark/80 shadow-card backdrop-blur'
                 //   : '',
+                {
+                    hidden: router.pathname.includes("/my-tasks"),
+                }
             )}>
             <div className="flex full items-start justify-between px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center">
