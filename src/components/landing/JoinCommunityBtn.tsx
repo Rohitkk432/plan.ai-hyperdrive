@@ -7,7 +7,7 @@ interface JoinCommunityBtnProps {}
 
 export const JoinCommunityBtn: React.FC<JoinCommunityBtnProps> = ({}) => {
     return (
-        <div className="relative flex items-center justify-center">
+        <div className="relative flex items-center justify-center scale-[0.8] sm:scale-[0.95] md:scale-100">
             <div className="absolute z-[20] flex cursor-pointer items-center justify-start gap-3 whitespace-nowrap rounded-lg bg-[#0a0a0a] px-[18px] py-3 text-xs xl:text-sm 3xl:text-base">
                 <OpenAIIcon className="w-7 h-7 mt-1 text-white" />
                 <div className="flex items-start justify-start">

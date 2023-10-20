@@ -24,13 +24,13 @@ interface FeaturesProps {
 export const Features: React.FC<FeaturesProps> = ({ scrollRef }) => {
     return (
         <div className="z-[20] flex w-screen flex-col items-center justify-center gap-10 top-bottom-landing-grad py-52 pt-16">
-            <div ref={scrollRef} className="pt-16 text-center text-4xl font-black tracking-tight text-white 2xl:text-5xl">
+            <div ref={scrollRef} className="pt-16 text-center text-2xl mx-8 sm:text-3xl md:text-4xl font-black tracking-tight text-white 2xl:text-5xl">
                 10x your engineering powers,
                 <br />
                 outsource work without revealing company secrets
             </div>
-            <div className="text-lg text-gray-400 xl:text-xl 3xl:text-2xl">scale whenever you want to, as easily as possible</div>
-            <div className="mb-2 flex w-full flex-wrap items-center justify-center gap-5 xl:gap-6 3xl:gap-8">
+            <div className="text-base md:text-lg text-gray-400 xl:text-xl 3xl:text-2xl mx-4">scale whenever you want to, as easily as possible</div>
+            <div className="mb-2 px-6 flex w-full flex-wrap items-center justify-center gap-5 xl:gap-6 3xl:gap-8">
                 <FeatureCard
                     element={<CurrencyDollarIcon className="h-10 w-10 text-primary" />}
                     title={"outsource work to skilled and talented developers "}
@@ -43,7 +43,7 @@ export const Features: React.FC<FeaturesProps> = ({ scrollRef }) => {
                 />
                 <FeatureCard element={<GlobeAsiaAustraliaIcon className="h-10 w-10 text-primary" />} title={"like uber, but for software"} body={"outsource whenever you want, the power is yours. "} />
             </div>
-            <div className="flex w-full flex-wrap items-center justify-center gap-5 xl:gap-6 3xl:gap-8">
+            <div className="flex w-full px-6 flex-wrap items-center justify-center gap-5 xl:gap-6 3xl:gap-8">
                 <FeatureCard
                     element={<PlusCircleIcon className="h-10 w-10 text-primary" />}
                     title={"always safe OSS dependencies"}

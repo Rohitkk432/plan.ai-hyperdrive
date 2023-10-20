@@ -34,7 +34,7 @@ export const Landing: React.FC<LandingProps> = ({}) => {
             </Head>
             <div className="flex min-h-screen w-screen flex-col items-center overflow-y-auto overflow-x-hidden bg-[#060606]">
                 <Nav handleFeatureClick={handleFeatureClick} />
-                <div className="h-20 xl:h-24 3xl:h-28 my-20">
+                <div className="h-16 md:h-20 xl:h-24 3xl:h-28 my-20">
                     <Image
                         alt="image"
                         width={0}

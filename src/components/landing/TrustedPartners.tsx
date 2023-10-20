@@ -15,10 +15,10 @@ export const TrustedPartners: React.FC<TrustedPartnersProps> = ({}) => {
       <div className="mt-10 text-sm uppercase text-primary xl:text-base 3xl:text-lg">
         Trusted by the best teams
       </div>
-      <div className="mb-14 mt-20 flex h-7 items-center justify-center gap-10 grayscale">
+      <div className="mb-8 mt-12 px-6 xl:mt-20 flex flex-wrap flex items-center justify-center gap-8 xl:gap-10 grayscale">
         <AnchorLink
           href={'https://solana.com/'}
-          className="h-full"
+          className="h-6"
           target="_blank"
         >
           <Image
@@ -32,7 +32,7 @@ export const TrustedPartners: React.FC<TrustedPartnersProps> = ({}) => {
         </AnchorLink>
         <AnchorLink
           href={'https://earn.superteam.fun/'}
-          className="h-full"
+          className="h-7"
           target="_blank"
         >
           <Image
@@ -41,13 +41,12 @@ export const TrustedPartners: React.FC<TrustedPartnersProps> = ({}) => {
             height={0}
             sizes="100vw"
             style={{ width: 'auto', height: '100%' }}
-            className="h-full" // optional
             src={SuperteamEarn}
           />
         </AnchorLink>
         <AnchorLink
           href={'https://superteam.fun/'}
-          className="h-full"
+          className="h-8"
           target="_blank"
         >
           <Image
@@ -56,7 +55,6 @@ export const TrustedPartners: React.FC<TrustedPartnersProps> = ({}) => {
             height={0}
             sizes="100vw"
             style={{ width: 'auto', height: '100%' }}
-            className="h-full" // optional
             src={Superteam}
           />
         </AnchorLink>

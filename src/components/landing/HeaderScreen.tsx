@@ -6,7 +6,7 @@ interface HeaderScreenProps {}
 
 export const HeaderScreen: React.FC<HeaderScreenProps> = ({}) => {
     return (
-        <div className="relative flex h-[907px] w-[1368.50px] mt-20 items-start justify-center">
+        <div className="relative flex h-[907px] w-[1368.50px] mt-20 items-start scale-[0.4] xs:scale-[0.5] sm-scale-[0.6] md:scale-[0.75] lg:scale-[0.85] xl:scale-100 justify-center">
             <div className="absolute h-[800px] w-[1000px] opacity-75 blur-[100px]">
                 <div className="absolute left-[600px] top-[-60px] h-[1200px] w-[720px] origin-top-left rotate-[19.53deg] rounded-full bg-[#6BAE63] blur-[100px]" />
                 <div className="absolute left-[400px] top-[310px] h-[600px] w-[620px] rounded-full bg-[#F5E468] blur-[100px]" />

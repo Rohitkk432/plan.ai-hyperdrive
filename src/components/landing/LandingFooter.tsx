@@ -16,7 +16,7 @@ interface LandingFooterProps {}
 
 export const LandingFooter: React.FC<LandingFooterProps> = ({}) => {
     return (
-        <div className="flex w-screen justify-between border-t-2 border-primary bg-[#060606] py-16 px-12">
+        <div className="flex w-screen justify-between items-center flex-col-reverse gap-14 sm:gap-0 sm:items-start sm:flex-row border-t-2 border-primary bg-[#060606] py-16 px-12">
             <AnchorLink href={"#"} className="h-12 xl:h-13 3xl:h-14">
                 <Image
                     alt="image"
@@ -27,8 +27,8 @@ export const LandingFooter: React.FC<LandingFooterProps> = ({}) => {
                     src={LogoFull}
                 />
             </AnchorLink>
-            <div className="flex flex-col items-end gap-8">
-                <div className="flex gap-8 text-base xl:text-lg 3xl:text-xl">
+            <div className="flex flex-col items-center sm:items-end gap-8">
+                <div className="flex gap-6 xs:gap-8 whitespace-pre text-base xl:text-lg 3xl:text-xl">
                     <AnchorLink href={"mailto:hellodefiOS@gmail.com"} className="text-primary">
                         say hi
                     </AnchorLink>
@@ -36,7 +36,7 @@ export const LandingFooter: React.FC<LandingFooterProps> = ({}) => {
                     <AnchorLink href={"#"}>privacy policy</AnchorLink>
                     <div>Copyright © 2023</div>
                 </div>
-                <div className="flex gap-10">
+                <div className="flex gap-8 xs:gap-10">
                     <AnchorLink href={"https://twitter.com/defiOSofficial"} target="_blank" className="flex h-8 w-10 cursor-pointer items-center justify-center">
                         <XTwitterIcon />
                     </AnchorLink>

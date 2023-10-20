@@ -10,8 +10,8 @@ interface NavProps {
 
 export const Nav: React.FC<NavProps> = ({ handleFeatureClick }) => {
     return (
-        <div className="mt-5 inline-flex w-full items-center justify-between gap-[193px] px-[3rem]">
-            <AnchorLink href={"#"} className="h-10 xl:h-12 3xl:h-14">
+        <div className="mt-5 inline-flex w-full items-center justify-between px-[3rem]">
+            <AnchorLink href={"#"} className="h-11 xl:h-12 3xl:h-14">
                 <Image
                     alt="image"
                     width={0}
@@ -21,7 +21,7 @@ export const Nav: React.FC<NavProps> = ({ handleFeatureClick }) => {
                     src={LogoFull}
                 />
             </AnchorLink>
-            <div className="mr-20 flex items-center justify-center gap-7 text-sm font-normal leading-[21px] tracking-tight text-white xl:text-base 3xl:text-lg">
+            <div className="mr-20 flex items-center justify-center gap-7 text-sm font-normal whitespace-pre tracking-tight text-white xl:text-base 3xl:text-lg">
                 <div onClick={handleFeatureClick} className="cursor-pointer">
                     features
                 </div>
@@ -37,7 +37,7 @@ export const Nav: React.FC<NavProps> = ({ handleFeatureClick }) => {
             </div>
             <AnchorLink
                 href={"mailto:hellodefiOS@gmail.com"}
-                className="flex items-center justify-center gap-4 text-sm font-medium leading-[21px] tracking-tight text-primary xl:text-base 3xl:text-lg">
+                className="flex items-center justify-center gap-4 text-sm font-medium whitespace-pre tracking-tight text-primary xl:text-base 3xl:text-lg">
                 <div>say hi!</div>
             </AnchorLink>
         </div>
