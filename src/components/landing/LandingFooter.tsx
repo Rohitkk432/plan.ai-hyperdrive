@@ -28,7 +28,7 @@ export const LandingFooter: React.FC<LandingFooterProps> = ({}) => {
                 />
             </AnchorLink>
             <div className="flex flex-col items-center sm:items-end gap-8">
-                <div className="flex gap-6 xs:gap-8 whitespace-pre text-base xl:text-lg 3xl:text-xl">
+                <div className="flex gap-4 xs:gap-8 whitespace-pre text-sm md:text-base xl:text-lg 3xl:text-xl">
                     <AnchorLink href={"mailto:hellodefiOS@gmail.com"} className="text-primary">
                         say hi
                     </AnchorLink>

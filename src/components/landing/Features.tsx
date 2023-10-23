@@ -29,7 +29,7 @@ export const Features: React.FC<FeaturesProps> = ({ scrollRef }) => {
                 <br />
                 outsource work without revealing company secrets
             </div>
-            <div className="text-base md:text-lg text-gray-400 xl:text-xl 3xl:text-2xl mx-4">scale whenever you want to, as easily as possible</div>
+            <div className="text-base md:text-lg text-center text-gray-400 xl:text-xl 3xl:text-2xl mx-4">scale whenever you want to, as easily as possible</div>
             <div className="mb-2 px-6 flex w-full flex-wrap items-center justify-center gap-5 xl:gap-6 3xl:gap-8">
                 <FeatureCard
                     element={<CurrencyDollarIcon className="h-10 w-10 text-primary" />}
