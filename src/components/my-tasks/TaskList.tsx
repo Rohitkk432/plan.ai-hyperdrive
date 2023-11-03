@@ -3,13 +3,19 @@ import { NoSymbolIcon, CubeTransparentIcon, EllipsisHorizontalIcon } from "@hero
 import Logo from "@/assets/images/logos/logo.png";
 import Image from "@/components/ui/image";
 
+import { useDrawer } from "@/components/drawer-views/context";
+
 interface TaskListProps {}
 
 export const TaskList: React.FC<TaskListProps> = ({}) => {
+    const { openDrawer } = useDrawer();
+
     return (
         <div className="w-full grid grid-cols-11 items-center py-4 border-b border-gray-500 cursor-pointer px-6 gap-2 bg-black 3xl:text-base xl:text-sm text-xs">
             <div className="text-gray-400">PT-3</div>
-            <div className="col-span-6">E2E testing with selenium</div>
+            <div onClick={() => openDrawer("TASK_SIDEBAR", "right", "transparent")} className="col-span-6 cursor-pointer">
+                E2E testing with selenium
+            </div>
             <div className="px-1 py-1.5 flex rounded-lg  items-center justify-center bg-red-700 font-medium">Open Source</div>
             <div className="flex w-full justify-center items-center text-green-400 border-gray-500 border py-1 rounded-lg">$400</div>
             <div className="col-span-2 flex gap-2.5 items-center justify-end">

@@ -78,7 +78,7 @@ export default function Header({ className }: { className?: string }) {
                 //   ? 'bg-gradient-to-b from-dark to-dark/80 shadow-card backdrop-blur'
                 //   : '',
                 {
-                    hidden: router.pathname.includes("/my-tasks"),
+                    hidden: router.pathname.includes("/my-tasks") || router.pathname.includes("/views"),
                 }
             )}>
             <div className="flex full items-start justify-between px-4 sm:px-6 lg:px-8">

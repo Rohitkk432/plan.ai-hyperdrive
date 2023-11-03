@@ -1,5 +1,5 @@
 import routes from '@/config/routes';
-import { PlusCircleIcon, FolderIcon, CubeTransparentIcon, WalletIcon } from "@heroicons/react/24/outline";
+import { PlusCircleIcon, FolderIcon, DocumentMagnifyingGlassIcon, WalletIcon } from "@heroicons/react/24/outline";
 
 export const menuItems: any = [
     {
@@ -13,9 +13,9 @@ export const menuItems: any = [
         href: routes.myTasks,
     },
     {
-        name: "Open Source",
-        icon: <CubeTransparentIcon className="h-5 w-5 xl:h-6 xl:w-6 3xl:h-7 3xl:w-7" />,
-        href: routes.openSource,
+        name: "Views",
+        icon: <DocumentMagnifyingGlassIcon className="h-5 w-5 xl:h-6 xl:w-6 3xl:h-7 3xl:w-7" />,
+        href: routes.views,
     },
     {
         name: "Billing",

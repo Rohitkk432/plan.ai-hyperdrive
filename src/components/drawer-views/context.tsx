@@ -1,8 +1,8 @@
 import { atom, useAtom } from "jotai";
 
-export type DRAWER_VIEW = "DASHBOARD_SIDEBAR" | "DRAWER_MENU" | "DRAWER_SEARCH" | "DRAWER_FILTER" | "ISSUE_CREATE";
+export type DRAWER_VIEW = "DASHBOARD_SIDEBAR" | "TASK_SIDEBAR" | "CREATE_VIEW";
 
-type DIRECTION = "left" | "right";
+type DIRECTION = "left" | "right" | "center";
 type BLUR = "transparent" | "transparent-glass" | "glass";
 type ATOM = {
     isOpen: boolean;
@@ -16,6 +16,20 @@ const drawerAtom = atom<ATOM>({
     direction: "left",
     blur: "glass",
 });
+
+// const drawerAtom = atom<ATOM>({
+//     isOpen: true,
+//     view: "TASK_SIDEBAR",
+//     direction: "right",
+//     blur: "transparent",
+// });
+
+// const drawerAtom = atom<ATOM>({
+//     isOpen: true,
+//     view: "CREATE_VIEW",
+//     direction: "center",
+//     blur: "glass",
+// });
 
 export function useDrawer() {
     const [state, setState] = useAtom(drawerAtom);

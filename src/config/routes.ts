@@ -1,7 +1,7 @@
 const routes = {
     createTasks: "/create-tasks",
     myTasks: "/my-tasks",
-    openSource: "/open-source",
+    views: "/views",
     billing: "/billing",
 };
 

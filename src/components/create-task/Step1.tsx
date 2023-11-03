@@ -15,12 +15,12 @@ import { ToggleSwitch } from "@/components/ui/button/toggle-switch";
 
 import GithubBtn from "@/components/SignInBtns/Github";
 import JiraBtn from "@/components/SignInBtns/Jira";
+import PhantomBtn from "@/components/SignInBtns/Phantom";
 
 import axios from "@/lib/axiosClient";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { setStep1Data } from "@/store/taskCreationSlice";
 import { useSession } from "next-auth/react";
-import { access } from "fs";
 
 interface RepoItemProps {
     repo: any;
@@ -264,6 +264,7 @@ export const Step1: React.FC<Step1Props> = ({ setStep }) => {
                 <div className="flex items-center gap-4">
                     <GithubBtn />
                     <JiraBtn />
+                    <PhantomBtn />
                 </div>
             </div>
 
