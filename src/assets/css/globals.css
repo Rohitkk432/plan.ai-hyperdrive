@@ -52,6 +52,52 @@
   }
 }
 
+.react-datepicker{
+  background-color: black !important;
+  border-color: rgb(29, 29, 29) !important;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+.react-datepicker__close-icon::after{
+  background-color: transparent !important;
+}
+
+.custom-datepicker{
+  .react-datepicker__triangle{
+    display: none;
+  }
+  .react-datepicker__day {
+    color: white;
+    margin: 4px 8px;
+    border-radius: 100%;
+  }
+  .react-datepicker__week {
+  }
+  .react-datepicker__day:hover {
+    background-color: rgb(66, 66, 66);
+    border-radius: 100%;
+  }
+  .react-datepicker__day-name {
+    color: rgb(202, 202, 202);
+    margin: 4px 8px;
+  }
+
+  .react-datepicker__current-month {
+    color: rgb(202, 202, 202);
+  }
+  .react-datepicker__navigation {
+    margin-top: 5px;
+  }
+  .react-datepicker__month-container{
+    width: 320px;
+    outline: none;
+  }
+  .react-datepicker__header{
+    background-color: #000;
+    border-color: rgb(100, 100, 100) !important;
+  }
+}
+
 .gradient-yellow-green {
   border: 2px double transparent;
   background-image: linear-gradient(black,black),
